@@ -1,8 +1,6 @@
 package banking.cli;
 
-import banking.model.Account;
 import banking.service.BankService;
-
 import java.util.Scanner;
 
 public class Menu {
@@ -20,7 +18,7 @@ public class Menu {
                 case 3 -> withdrawAmount();
                 case 4 -> showAccountSummary();
                 case 5 -> {
-                    System.out.println("Thank you! Exiting.");
+                    System.out.println("Thank you!");
                     return;
                 }
                 default -> System.out.println("Invalid choice. Try again.");
