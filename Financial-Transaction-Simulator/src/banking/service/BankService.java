@@ -34,7 +34,7 @@ public class BankService {
 
     public void withdraw(long accountNumber, double amount) {
         Account account = accounts.get(accountNumber);
-        account.withdrawl(amount);
+        account.withdraw(amount);
 
         System.out.println(amount + " has been debited from account " + accountNumber);
     }

@@ -17,7 +17,7 @@ public class Menu {
                 case 1 -> accountCreation();
                 case 2 -> depositAmount();
                 case 3 -> withdrawAmount();
-                case 4 -> bankService.showAccountSummary();
+                case 4 -> showAccountSummary();
                 case 5 -> {
                     System.out.println("Thank you! Exiting.");
                     return;
@@ -28,11 +28,11 @@ public class Menu {
     }
 
     private int validateChoice() {
-        while (!scanner.hasNextInt()) {
+        while (!sc.hasNextInt()) {
             System.out.print("Enter A Valid Number: ");
-            scanner.next();
+            sc.next();
         }
-        return scanner.nextInt();
+        return sc.nextInt();
     }
 
     private void printMenu() {
@@ -77,6 +77,13 @@ public class Menu {
         System.out.println("Enter amount to withdraw: ");
         int amount = sc.nextInt();
 
-        bankService.withdrawl(accountNumber, amount);
+        bankService.withdraw(accountNumber, amount);
+    }
+
+    private void showAccountSummary() {
+        System.out.println("Enter Account Number");
+        long accountNumber = sc.nextLong();
+
+
     }
 }
