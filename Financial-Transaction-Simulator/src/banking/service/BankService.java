@@ -22,7 +22,11 @@ public class BankService {
 
     public void deposit(long accountNumber, double amount) {
         Account account = accounts.get(accountNumber);
-        if(amount < 0) {
+        if (account == null) {
+            System.out.println("Account not found.");
+            return;
+        }
+        else if(amount < 0) {
             System.out.println("Invalid amount");
             return;
         }
@@ -34,8 +38,22 @@ public class BankService {
 
     public void withdraw(long accountNumber, double amount) {
         Account account = accounts.get(accountNumber);
+        if (account == null) {
+            System.out.println("Account not found.");
+            return;
+        }
         account.withdraw(amount);
 
         System.out.println(amount + " has been debited from account " + accountNumber);
+    }
+
+    public void accountSummary(long accountNumber) {
+        Account account = accounts.get(accountNumber);
+        if(account == null) {
+            System.out.println("Account " + accountNumber + " not found");
+            return;
+        }
+
+        System.out.println(account);
     }
 }

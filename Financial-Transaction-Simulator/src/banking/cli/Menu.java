@@ -1,5 +1,6 @@
 package banking.cli;
 
+import banking.model.Account;
 import banking.service.BankService;
 
 import java.util.Scanner;
@@ -84,6 +85,7 @@ public class Menu {
         System.out.println("Enter Account Number");
         long accountNumber = sc.nextLong();
 
+        bankService.accountSummary(accountNumber);
 
     }
 }
