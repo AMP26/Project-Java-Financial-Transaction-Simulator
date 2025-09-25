@@ -11,7 +11,14 @@ public class Account {
         this.user = user;
     }
 
-    public void deposit(double balance) {
-        this.balance += balance;
+    public void deposit(double amount) {
+        this.balance += amount;
+    }
+
+    public void withdraw(double amount) {
+        if(amount < 0 || amount > balance) {
+            System.out.println("Invalid amount");
+        }
+        else { this.balance -= amount; }
     }
 }

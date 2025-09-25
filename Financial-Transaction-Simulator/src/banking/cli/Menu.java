@@ -15,8 +15,8 @@ public class Menu {
 
             switch (choice) {
                 case 1 -> accountCreation();
-                case 2 -> deposits();
-                case 3 -> withdrawls();
+                case 2 -> depositAmount();
+                case 3 -> withdrawAmount();
                 case 4 -> bankService.showAccountSummary();
                 case 5 -> {
                     System.out.println("Thank you! Exiting.");
@@ -59,7 +59,7 @@ public class Menu {
         System.out.println("Account created successfully! Your Account Number: " + accountNumber);
     }
 
-    private void deposits() {
+    private void depositAmount() {
         System.out.println("Enter Account Number");
         long accountNumber = sc.nextLong();
 
@@ -68,5 +68,15 @@ public class Menu {
 
         bankService.deposit(accountNumber, amount);
 
+    }
+
+    private void withdrawAmount() {
+        System.out.println("Enter Account Number");
+        long accountNumber = sc.nextLong();
+
+        System.out.println("Enter amount to withdraw: ");
+        int amount = sc.nextInt();
+
+        bankService.withdrawl(accountNumber, amount);
     }
 }

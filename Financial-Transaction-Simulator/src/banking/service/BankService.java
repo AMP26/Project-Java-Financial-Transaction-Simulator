@@ -20,7 +20,7 @@ public class BankService {
         return accountNumber;
     }
 
-    public void deposit(long accountNumber, long amount) {
+    public void deposit(long accountNumber, double amount) {
         Account account = accounts.get(accountNumber);
         if(amount < 0) {
             System.out.println("Invalid amount");
@@ -30,5 +30,12 @@ public class BankService {
             account.deposit(amount);
             System.out.println("Deposited " + amount + " to account " + accountNumber);
         }
+    }
+
+    public void withdraw(long accountNumber, double amount) {
+        Account account = accounts.get(accountNumber);
+        account.withdrawl(amount);
+
+        System.out.println(amount + " has been debited from account " + accountNumber);
     }
 }
