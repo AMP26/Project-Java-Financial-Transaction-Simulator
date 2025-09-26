@@ -1,11 +1,17 @@
 package banking.cli;
 
 import banking.service.BankService;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Menu {
 
     private final BankService bankService = new BankService();
+    private final List<String> transactionHistory = new ArrayList<>();
     private final Scanner sc = new Scanner(System.in);
     public void start() {
         while (true) {
@@ -17,7 +23,8 @@ public class Menu {
                 case 2 -> depositAmount();
                 case 3 -> withdrawAmount();
                 case 4 -> showAccountSummary();
-                case 5 -> {
+                case 5 -> viewTransactionHistory();
+                case 6 -> {
                     System.out.println("Thank you!");
                     return;
                 }
@@ -40,7 +47,8 @@ public class Menu {
         System.out.println("2. Deposit");
         System.out.println("3. Withdraw");
         System.out.println("4. View Account Summary");
-        System.out.println("5. Exit");
+        System.out.println("5. View Transaction History");
+        System.out.println("6. Exit");
         System.out.print("Enter your choice: ");
     }
 
@@ -55,7 +63,12 @@ public class Menu {
         char gender = sc.next().charAt(0);
 
         long accountNumber = bankService.createUser(name, age, gender);
+        String logMessage = String.format("Account created for user: %s, Account Number: %d", name, accountNumber);
+
         System.out.println("Account created successfully! Your Account Number: " + accountNumber);
+        System.out.println("Transaction Log: " + logMessage);
+
+        transactionHistory.add(logMessage);
     }
 
     private void depositAmount() {
@@ -66,6 +79,10 @@ public class Menu {
         int amount = sc.nextInt();
 
         bankService.deposit(accountNumber, amount);
+        String logMessage = String.format("Deposit of %d made to Account Number: %d", amount, accountNumber);
+
+        System.out.println("Transaction Log: " + logMessage);
+        transactionHistory.add(logMessage);
 
     }
 
@@ -77,6 +94,11 @@ public class Menu {
         int amount = sc.nextInt();
 
         bankService.withdraw(accountNumber, amount);
+
+        String logMessage = String.format("Withdrawal of %d made from Account Number: %d", amount, accountNumber);
+
+        System.out.println("Transaction Log: " + logMessage);
+        transactionHistory.add(logMessage);
     }
 
     private void showAccountSummary() {
@@ -85,5 +107,21 @@ public class Menu {
 
         bankService.accountSummary(accountNumber);
 
+        String logMessage = String.format("Account summary viewed for Account Number: %d", accountNumber);
+
+        System.out.println("Transaction Log: " + logMessage);
+        transactionHistory.add(logMessage);
+
+    }
+
+    private void viewTransactionHistory() {
+        if (transactionHistory.isEmpty()) {
+            System.out.println("No transactions recorded in this session.");
+        } else {
+            System.out.println("\nTransaction History:");
+            for (String log : transactionHistory) {
+                System.out.println(log);
+            }
+        }
     }
 }
