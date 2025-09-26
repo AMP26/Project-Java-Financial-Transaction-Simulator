@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class BankService {
     Map<Long, Account> accounts = new HashMap<>();
-    private long nextAccountNumber = 10000L;
+    private long nextAccountNumber = 100000L;
 
     public long createUser(String name, int age, char gender) {
         User user = new User(name, age, gender);
@@ -59,9 +59,9 @@ public class BankService {
 
     public User getUserByAccountNumber(long accountNumber) {
         Account account = accounts.get(accountNumber);
-        if (account != null) {
-            return account.getUser();
-        }
+
+        if (account != null) { return account.getUser(); }
+
         return null;
     }
 }

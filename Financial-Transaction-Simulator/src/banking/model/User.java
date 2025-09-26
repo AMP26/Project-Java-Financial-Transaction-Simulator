@@ -18,7 +18,7 @@ public class User {
     public String getName() { return name; }
 
     public int getAge() { return age; }
-    
+
     public char getGender() { return gender; }
 
     public void addTransactionLog(String log) { transactionLogs.add(log); }
