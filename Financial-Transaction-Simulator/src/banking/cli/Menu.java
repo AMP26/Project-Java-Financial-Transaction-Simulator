@@ -5,8 +5,6 @@ import banking.service.BankService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Menu {
 
@@ -83,7 +81,6 @@ public class Menu {
 
         System.out.println("Transaction Log: " + logMessage);
         transactionHistory.add(logMessage);
-
     }
 
     private void withdrawAmount() {
@@ -111,13 +108,13 @@ public class Menu {
 
         System.out.println("Transaction Log: " + logMessage);
         transactionHistory.add(logMessage);
-
     }
 
     private void viewTransactionHistory() {
         if (transactionHistory.isEmpty()) {
             System.out.println("No transactions recorded in this session.");
-        } else {
+        }
+        else {
             System.out.println("\nTransaction History:");
             for (String log : transactionHistory) {
                 System.out.println(log);
