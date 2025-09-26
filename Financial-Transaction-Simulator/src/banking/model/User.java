@@ -9,6 +9,8 @@ public class User {
     private char gender;
     private final List<String> transactionLogs = new ArrayList<>();
 
+    public User() {}
+
     public User(String name, int age, char gender) {
         this.name = name;
         this.age = age;
