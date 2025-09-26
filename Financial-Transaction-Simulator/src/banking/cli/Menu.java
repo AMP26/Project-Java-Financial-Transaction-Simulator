@@ -97,7 +97,7 @@ public class Menu {
     }
 
     private void depositAmount() {
-        if (!checkLoggedIn()) return;
+        if (checkLoggedIn()) return;
 
         System.out.println("Enter amount to deposit: ");
         int amount = sc.nextInt();
@@ -116,7 +116,7 @@ public class Menu {
     }
 
     private void withdrawAmount() {
-        if (!checkLoggedIn()) return;
+        if (checkLoggedIn()) return;
 
         System.out.println("Enter amount to withdraw: ");
         int amount = sc.nextInt();
@@ -135,7 +135,7 @@ public class Menu {
     }
 
     private void showAccountSummary() {
-        if (!checkLoggedIn()) return;
+        if (checkLoggedIn()) return;
 
         bankService.accountSummary(currentAccountNumber);
 
@@ -149,7 +149,7 @@ public class Menu {
     }
 
     private void viewUserTransactionHistory() {
-        if (!checkLoggedIn()) return;
+        if (checkLoggedIn()) return;
 
         User user = bankService.getUserByAccountNumber(currentAccountNumber);
         if (user == null) {
@@ -171,8 +171,8 @@ public class Menu {
     private boolean checkLoggedIn() {
         if (currentAccountNumber == null) {
             System.out.println("No account selected. Please create an account or login first.");
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 }
