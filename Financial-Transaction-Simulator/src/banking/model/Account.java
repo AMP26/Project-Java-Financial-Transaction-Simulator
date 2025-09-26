@@ -22,6 +22,10 @@ public class Account {
         else { this.balance -= amount; }
     }
 
+    public User getUser() {
+        return user;
+    }
+
     public String toString() {
         return "Account{" +
                 "accountNumber=" + accountNumber +

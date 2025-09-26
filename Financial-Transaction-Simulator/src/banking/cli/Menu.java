@@ -1,5 +1,6 @@
 package banking.cli;
 
+import banking.model.User;
 import banking.service.BankService;
 
 import java.util.ArrayList;
@@ -110,13 +111,22 @@ public class Menu {
         transactionHistory.add(logMessage);
     }
 
-    private void viewTransactionHistory() {
-        if (transactionHistory.isEmpty()) {
-            System.out.println("No transactions recorded in this session.");
+    private void viewUserTransactionHistory() {
+        System.out.println("Enter Account Number to view history:");
+        long accountNumber = sc.nextLong();
+
+        User user = bankService.getUserByAccountNumber(accountNumber);
+        if (user == null) {
+            System.out.println("Account not found.");
+            return;
         }
-        else {
-            System.out.println("\nTransaction History:");
-            for (String log : transactionHistory) {
+
+        List<String> logs = user.getTransactionLogs();
+        if (logs.isEmpty()) {
+            System.out.println("No transactions recorded for this account.");
+        } else {
+            System.out.println("\n=== Transaction History for Account: " + accountNumber + " ===");
+            for (String log : logs) {
                 System.out.println(log);
             }
         }

@@ -56,4 +56,12 @@ public class BankService {
 
         System.out.println(account);
     }
+
+    public User getUserByAccountNumber(long accountNumber) {
+        Account account = accounts.get(accountNumber);
+        if (account != null) {
+            return account.getUser();
+        }
+        return null;
+    }
 }
