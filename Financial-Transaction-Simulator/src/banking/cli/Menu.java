@@ -91,9 +91,7 @@ public class Menu {
         System.out.println("Transaction Log: " + logMessage);
 
         User user = bankService.getUserByAccountNumber(accountNumber);
-        if (user != null) {
-            user.addTransactionLog(logMessage);
-        }
+        if (user != null) { user.addTransactionLog(logMessage); }
     }
 
     private void depositAmount() {
@@ -110,9 +108,7 @@ public class Menu {
         System.out.println("Transaction Log: " + logMessage);
 
         User user = bankService.getUserByAccountNumber(currentAccountNumber);
-        if (user != null) {
-            user.addTransactionLog(logMessage);
-        }
+        if (user != null) { user.addTransactionLog(logMessage); }
     }
 
     private void withdrawAmount() {
@@ -129,9 +125,7 @@ public class Menu {
         System.out.println("Transaction Log: " + logMessage);
 
         User user = bankService.getUserByAccountNumber(currentAccountNumber);
-        if (user != null) {
-            user.addTransactionLog(logMessage);
-        }
+        if (user != null) { user.addTransactionLog(logMessage); }
     }
 
     private void showAccountSummary() {
@@ -143,9 +137,7 @@ public class Menu {
         String logMessage = String.format("[%s] Account summary viewed for Account Number: %d", timestamp, currentAccountNumber);
 
         User user = bankService.getUserByAccountNumber(currentAccountNumber);
-        if (user != null) {
-            user.addTransactionLog(logMessage);
-        }
+        if (user != null) { user.addTransactionLog(logMessage); }
     }
 
     private void viewUserTransactionHistory() {
@@ -158,9 +150,8 @@ public class Menu {
         }
 
         List<String> logs = user.getTransactionLogs();
-        if (logs.isEmpty()) {
-            System.out.println("No transactions recorded for this account.");
-        } else {
+        if (logs.isEmpty()) { System.out.println("No transactions recorded for this account."); }
+        else {
             System.out.println("\nTransaction History for Account: " + currentAccountNumber);
             for (String log : logs) {
                 System.out.println(log);
