@@ -59,7 +59,7 @@ public class Menu {
                         else { System.out.println("Account number not found, try again."); }
                     }
                     case 3 -> {
-                        System.out.println("Thank you! Exiting...");
+                        System.out.println("Thank you!");
                         return; // Exit the program
                     }
                     default -> System.out.println("Invalid choice. Try again.");
