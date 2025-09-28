@@ -60,7 +60,7 @@ public class Menu {
                     }
                     case 3 -> {
                         System.out.println("Thank you!");
-                        return; // Exit the program
+                        return;
                     }
                     default -> System.out.println("Invalid choice. Try again.");
                 }
