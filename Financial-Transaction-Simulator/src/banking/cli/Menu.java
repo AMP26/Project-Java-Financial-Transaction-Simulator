@@ -20,7 +20,7 @@ public class Menu {
 
     private int validateChoice() {
         while (!sc.hasNextInt()) {
-            System.out.print("Enter a valid number: ");
+            System.out.print("Enter a valid number: "); 
             sc.next();
         }
         return sc.nextInt();
