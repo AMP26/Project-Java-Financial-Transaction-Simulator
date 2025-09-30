@@ -16,7 +16,7 @@ public class Controller {
     private final Scanner sc;
 
     public Controller(BankService bankService, SessionManager sessionManager, TransactionLogger transactionLogger, Scanner scanner) {
-        this.bankService = bankService;
+        this.bankService = bankService; 
         this.sessionManager = sessionManager;
         this.transactionLogger = transactionLogger;
         this.sc = scanner;
